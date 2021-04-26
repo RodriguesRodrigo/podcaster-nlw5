@@ -27,6 +27,7 @@ export function Player() {
     playPrevious,
     toggleLoop,
     toggleShuffle,
+    clearPlayerState,
   } = usePlayer();
 
   useEffect(() => {
@@ -55,6 +56,15 @@ export function Player() {
   function handleSeek(amount: number) {
     audioRef.current.currentTime = amount;
     setProgress(amount);
+  }
+
+  function handleEpisodeEnded() {
+    if (hasNext) {
+      playNext();
+    }
+    else {
+      clearPlayerState();
+    }
   }
 
   return (
@@ -107,6 +117,7 @@ export function Player() {
             ref={audioRef}
             onPlay={() => { setPlayingState(true) }}
             onPause={() => { setPlayingState(false) }}
+            onEnded={handleEpisodeEnded}
             loop={isLooping}
             autoPlay
             onLoadedMetadata={setupProgressListener}
