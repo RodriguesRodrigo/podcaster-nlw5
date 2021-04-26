@@ -13,6 +13,9 @@ type PlayerContextType = {
   currentEpisodeIndex: number;
   isPlaying: boolean;
   play: (episode: Episode) => void;
+  playList: (list: Episode[], index: number) => void;
+  playNext: () => void;
+  playPrevious: () => void;
   togglePlay: () => void;
 }
 
@@ -33,8 +36,28 @@ export function PlayerContextProvider({ children }: PlayerContextProviderProps) 
     setIsPlaing(true);
   }
 
+  function playList(list: Episode[], index: number) {
+    setEpisodeList(list);
+    setCurrentEpisodeIndex(index);
+    setIsPlaing(true);
+  }
+
   function togglePlay() {
     setIsPlaing(!isPlaying);
+  }
+
+  function playNext() {
+    const nextEpisodeIndex = currentEpisodeIndex + 1;
+
+    if (nextEpisodeIndex < episodeList.length) {
+      setCurrentEpisodeIndex(nextEpisodeIndex);
+    }
+  }
+
+  function playPrevious() {
+    if (currentEpisodeIndex > 0) {
+      setCurrentEpisodeIndex(currentEpisodeIndex - 1);
+    }
   }
 
   return (
@@ -42,6 +65,9 @@ export function PlayerContextProvider({ children }: PlayerContextProviderProps) 
       episodeList,
       currentEpisodeIndex,
       play,
+      playList,
+      playNext,
+      playPrevious,
       isPlaying,
       togglePlay
     }}>
