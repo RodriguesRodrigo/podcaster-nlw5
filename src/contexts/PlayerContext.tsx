@@ -20,6 +20,7 @@ type PlayerContextType = {
   playList: (list: Episode[], index: number) => void;
   playNext: () => void;
   playPrevious: () => void;
+  setPlayingState: (state: boolean) => void;
   togglePlay: () => void;
   toggleLoop: () => void;
   toggleShuffle: () => void;
@@ -55,6 +56,10 @@ export function PlayerContextProvider({ children }: PlayerContextProviderProps) 
 
   function togglePlay() {
     setIsPlaing(!isPlaying);
+  }
+
+  function setPlayingState(state: boolean) {
+    setIsPlaing(state);
   }
 
   function playNext() {
@@ -94,6 +99,7 @@ export function PlayerContextProvider({ children }: PlayerContextProviderProps) 
       playList,
       playNext,
       playPrevious,
+      setPlayingState,
       isPlaying,
       isLooping,
       isShuffling,
