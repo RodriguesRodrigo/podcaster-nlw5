@@ -62,3 +62,13 @@ npm run start
 Dessa forma, todas as páginas serão criadas de forma estática no comando ```build``` para que os usuários que forem acessar a aplicação, receba o mesmo conteúdo. Dessa forma, o carregamento da página diminui drasticamente, evitando que seja feito consultas em abundância para o backend.
 
 A aplicação frontend está apontada para a porta **3000**, então basta acessar a página ```http://localhost:3000``` no seu ambiente de desenvolvimento. Para visualizar o **json-server**, é possível através da URL ```http://localhost:3333```.
+
+# TODO
+
+* Adicionar sistema de autenticação;
+* Disponibilizar um backend real para que a aplicação frontend faça a comunicação;
+* Criar testes para a aplicação;
+* Permitir responsividade na aplicação, para acessos em dispositivos mobile e tablets;
+* Transformar a aplicação web em uma PWA (next-pwa);
+* Tema dark (https://github.com/getomni/omni#color-palette)
+* Publicar o projeto em um ambiente de produção;
